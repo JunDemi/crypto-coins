@@ -55,5 +55,10 @@ npx create-react-app . --template typescript @types/node @types/react @type/reac
 npm i styled-components
 npm i styled-components @types/styled-components
 npm i react-router-dom@5.3.0 react-query
-npm i react-router-dom
 npm i --save-dev @types/react-router-dom
+
+npm i react-router-dom
+
+
+npm i react-query @tanstack/react-query
+npm i -D @tanstack/react-query-devtools
