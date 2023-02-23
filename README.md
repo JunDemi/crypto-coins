@@ -65,3 +65,6 @@ npm i -D @tanstack/react-query-devtools
 npm install --save react-apexcharts apexcharts
 npm i react-helmet
 npm i --save-dev @types/react-helmet
+
+npm i gh-pages
+npm run build
