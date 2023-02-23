@@ -7,9 +7,10 @@ import { fetchCoins } from "../api";
 const Container = styled.div`
   padding: 0 20px;
   margin: 0 auto;
+  transition: .2s ease-in;
 `;
 const Header = styled.header`
-  height: 10vh;
+  height: 15vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,12 +29,14 @@ const CoinsList = styled.ul`
   margin: 0 auto;
 `;
 const Coin = styled.li`
-  background-color: white;
-  color: ${(props) => props.theme.bgColor};
+  background-color: ${(props) => props.theme.cardBgColor};
+  color: ${(props) => props.theme.cardTextColor};
   margin: 0 auto;
   margin-bottom: 15px;
   border-radius: 15px;
   max-width: 400px;
+  box-shadow: 3px 3px 3px ${props => props.theme.shadow};
+  transition: 0.2s ease-in;
   a {
     transition: color 0.2s ease-in;
     display: flex;
@@ -42,6 +45,7 @@ const Coin = styled.li`
     font-weight: bold;
   }
   &:hover {
+    opacity: 0.7;
     a {
       color: ${(props) => props.theme.accentColor};
     }
@@ -62,9 +66,13 @@ interface ICoins {
   is_active: boolean;
   type: string;
 }
+interface ICoinsprops {
+  themeToggle: () => void
+}
 
-function Coins() {
-  const {isLoading, data} = useQuery<ICoins[]>(["allCoins"], fetchCoins)
+
+function Coins({themeToggle}: ICoinsprops) {
+  const {isLoading, data} = useQuery<ICoins[]>(["allCoins"], fetchCoins);
   /*
   const [coins, set_coins] = useState<ICoins[]>([]);
   const [loading, set_loading] = useState(true);

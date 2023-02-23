@@ -1,11 +1,11 @@
-import React from "react";
-import styled, { createGlobalStyle } from "styled-components";
+import React, { useState } from "react";
+import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import Router from "./Router";
 import { ReactQueryDevtools } from "react-query/devtools";
-
+import { LightTheme, DarkTheme } from "./theme";
 
 const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -64,15 +64,37 @@ a{
   box-sizing: border-box;
 }
 `;
+const ToggleButton = styled.button`
+  position: fixed;
+  bottom: 20px;
+  left: 30px;
+  background-color: ${props => props.theme.cardBgColor};
+  box-shadow: 2px 2px 4px ${props => props.theme.shadow};
+  padding: 15px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img{
+    transition: .2s ease-in;
+  }
+`;
 
 function App() {
-  return(
+  const [islight, set_light] = useState(false);
+  const themeToggle = () => set_light((change) => !change);
+  return (
     <>
-      <GlobalStyle/>
-      <Router/>
-      <ReactQueryDevtools initialIsOpen={true}/>
+      <ThemeProvider theme={islight ? LightTheme : DarkTheme}>
+        <ToggleButton onClick={themeToggle}>
+          <img src={islight ? `https://cdn-icons-png.flaticon.com/512/6714/6714978.png` : `https://cdn-icons-png.flaticon.com/512/8637/8637690.png`} width="20px" height="20px" />
+        </ToggleButton>
+        <GlobalStyle />
+        <Router islight={islight} themeToggle={themeToggle}/>
+      </ThemeProvider>
     </>
-    )
+  )
 }
 
 export default App;

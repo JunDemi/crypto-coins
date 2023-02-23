@@ -62,3 +62,6 @@ npm i react-router-dom
 
 npm i react-query @tanstack/react-query
 npm i -D @tanstack/react-query-devtools
+npm install --save react-apexcharts apexcharts
+npm i react-helmet
+npm i --save-dev @types/react-helmet

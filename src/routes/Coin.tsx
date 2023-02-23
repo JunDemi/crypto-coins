@@ -12,6 +12,7 @@ import Chart from "./Chart";
 import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
 import { fetchCoinInfo, fetchCoinTickers } from "../api";
+import { Helmet } from "react-helmet";
 
 interface IParam {
   coinId: string;
@@ -84,16 +85,30 @@ interface IpriceData {
     };
   };
 }
+interface ICoinprops {
+  islight: boolean
+}
+
 
 const Container = styled.div`
   padding: 0 20px;
   margin: 0 auto;
 `;
 const Header = styled.header`
-  height: 20vh;
+  height: 15vh;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  max-width: 450px;
+  margin: 0 auto;
+  a{
+    color: ${(props) => props.theme.accentColor};
+    font-size: 40px;
+    transition: color 0.3s ease-in;
+    &:hover{
+      color: #6c5ce7;
+    }
+  }
 `;
 const Title = styled.h1`
   color: ${(props) => props.theme.accentColor};
@@ -122,7 +137,7 @@ const OverviewInfo = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #212628;
+  background-color: ${props => props.theme.overviewColor};
   border-radius: 15px;
   ${ItemDiv} {
     padding: 7px;
@@ -140,7 +155,7 @@ const OverviewSupp = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #212628;
+  background-color: ${props => props.theme.overviewColor};
   border-radius: 15px;
   ${ItemDiv} {
     padding: 7px 30px;
@@ -161,19 +176,25 @@ const Tab = styled.span<{ isActive: boolean }>`
   a {
     display: block;
     padding: 10px 0;
-    background-color: #191d1e;
-    border-radius: 20px;
     transition: 0.2s ease-in;
+    border-radius: 8px;
     color: ${(props) =>
-      props.isActive ? props.theme.accentColor : props.theme.textColor};
+    props.isActive ? props.theme.accentColor : props.theme.textColor};
+    border-bottom: 2px solid ${(props) =>
+    props.isActive ? props.theme.accentColor : props.theme.textColor};
     &:hover {
-      background-color: #0e1011;
       color: ${(props) => props.theme.accentColor};
+      border-bottom: 2px solid ${(props) => props.theme.accentColor};
     }
   }
 `;
+const Blank = styled.div`
+  font-size: 40px;
+  opacity: 0;
+`;
 
-function Coin() {
+
+function Coin({islight}: ICoinprops) {
   const { coinId } = useParams<IParam>();
   const { state } = useLocation<ILocation>();
   const priceMatch = useRouteMatch("/:coinId/price");
@@ -184,9 +205,12 @@ function Coin() {
   );
   const { isLoading: tickersLoading, data: tickersData } = useQuery<IpriceData>(
     ["tickers", coinId],
-    () => fetchCoinTickers(coinId)
+    () => fetchCoinTickers(coinId),
+    {
+      refetchInterval: 5000,
+    }
   );
-    const loading = infoLoading || tickersLoading;
+  const loading = infoLoading || tickersLoading;
   /*
   const [loading, set_loading] = useState(true);
   const [info, set_info] = useState<IinfoData>();
@@ -208,10 +232,17 @@ function Coin() {
   */
   return (
     <Container>
+      <Helmet>
+        <title>
+          {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
+        </title>
+      </Helmet>
       <Header>
+      <Link to="/">〈〈</Link>
         <Title>
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
         </Title>
+        <Blank >&rarr;</Blank>
       </Header>
       {loading ? (
         <Loading>Loading...</Loading>
@@ -227,8 +258,8 @@ function Coin() {
               <BottomP>${infoData?.symbol || "No Data.."}</BottomP>
             </ItemDiv>
             <ItemDiv>
-              <TopP>OPEN SOURCE:</TopP>
-              <BottomP>{infoData?.open_source ? "YES" : "NO"}</BottomP>
+              <TopP>Price:</TopP>
+              <BottomP>${tickersData?.quotes.USD.price.toFixed(3)}</BottomP>
             </ItemDiv>
           </OverviewInfo>
           <Descrip>{infoData?.description || "No Data.."}</Descrip>
@@ -255,7 +286,7 @@ function Coin() {
               <Price />
             </Route>
             <Route path={`/:coidId/chart`}>
-              <Chart />
+              <Chart islight={islight} coinId={coinId} />
             </Route>
           </Switch>
         </Wrapper>

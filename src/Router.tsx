@@ -2,14 +2,20 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Coin from "./routes/Coin";
 import Coins from "./routes/Coins";
 
-function Router(){
+
+interface IRouterprops {
+    islight: boolean,
+    themeToggle: () => void
+}
+
+function Router({themeToggle, islight}: IRouterprops){
     return <BrowserRouter>
         <Switch>
             <Route path="/:coinId">
-                <Coin />
+                <Coin islight={islight}/>
             </Route>
             <Route path="/">
-                <Coins />
+                <Coins themeToggle={themeToggle}/>
             </Route>
         </Switch>
     </BrowserRouter>;
