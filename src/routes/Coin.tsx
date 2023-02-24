@@ -86,9 +86,8 @@ interface IpriceData {
   };
 }
 interface ICoinprops {
-  islight: boolean
+  islight: boolean;
 }
-
 
 const Container = styled.div`
   padding: 0 20px;
@@ -101,11 +100,11 @@ const Header = styled.header`
   align-items: center;
   max-width: 450px;
   margin: 0 auto;
-  a{
+  a {
     color: ${(props) => props.theme.accentColor};
     font-size: 40px;
     transition: color 0.3s ease-in;
-    &:hover{
+    &:hover {
       color: #6c5ce7;
     }
   }
@@ -137,7 +136,8 @@ const OverviewInfo = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${props => props.theme.overviewColor};
+  background-color: ${(props) => props.theme.cardBgColor};
+  box-shadow: 2px 2px 4px ${props => props.theme.shadow};
   border-radius: 15px;
   ${ItemDiv} {
     padding: 7px;
@@ -145,17 +145,24 @@ const OverviewInfo = styled.div`
     text-align: center;
   }
 `;
-const Descrip = styled.p`
+const Descrip = styled.div`
   margin: 30px 0;
   font-weight: lighter;
+  background-color: ${(props) => props.theme.cardBgColor};
+  box-shadow: 2px 2px 4px ${props => props.theme.shadow};
+  padding: 20px;
+  border-radius: 15px;
+  font-size: 14px;
   letter-spacing: 0.5px;
-  line-height: 1.3;
+  line-height: 1.6;
 `;
 const OverviewSupp = styled.div`
+margin-top: 30px;
   display: flex;
   justify-content: space-between;
+  box-shadow: 2px 2px 4px ${props => props.theme.shadow};
   align-items: center;
-  background-color: ${props => props.theme.overviewColor};
+  background-color: ${(props) => props.theme.cardBgColor};
   border-radius: 15px;
   ${ItemDiv} {
     padding: 7px 30px;
@@ -176,15 +183,20 @@ const Tab = styled.span<{ isActive: boolean }>`
   a {
     display: block;
     padding: 10px 0;
+    box-shadow: 2px 2px 4px ${props => props.theme.shadow};
     transition: 0.2s ease-in;
-    border-radius: 8px;
+    border-radius: 30px;
+    background-color: 
+    ${(props) =>
+      props.isActive ? props.theme.cardBgColor : props.theme.btnColor};
     color: ${(props) =>
-    props.isActive ? props.theme.accentColor : props.theme.textColor};
-    border-bottom: 2px solid ${(props) =>
-    props.isActive ? props.theme.accentColor : props.theme.textColor};
+      props.isActive ? props.theme.accentColor : props.theme.textColor};
+    border: 2px solid
+      ${(props) =>
+        props.isActive ? props.theme.accentColor : props.theme.btnColor};
     &:hover {
       color: ${(props) => props.theme.accentColor};
-      border-bottom: 2px solid ${(props) => props.theme.accentColor};
+      opacity: 0.6;
     }
   }
 `;
@@ -193,8 +205,7 @@ const Blank = styled.div`
   opacity: 0;
 `;
 
-
-function Coin({islight}: ICoinprops) {
+function Coin({ islight }: ICoinprops) {
   const { coinId } = useParams<IParam>();
   const { state } = useLocation<ILocation>();
   const priceMatch = useRouteMatch("/:coinId/price");
@@ -238,11 +249,11 @@ function Coin({islight}: ICoinprops) {
         </title>
       </Helmet>
       <Header>
-      <Link to="/">〈〈</Link>
+        <Link to="/">〈〈</Link>
         <Title>
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
         </Title>
-        <Blank >&rarr;</Blank>
+        <Blank>&rarr;</Blank>
       </Header>
       {loading ? (
         <Loading>Loading...</Loading>
@@ -262,7 +273,6 @@ function Coin({islight}: ICoinprops) {
               <BottomP>${tickersData?.quotes.USD.price.toFixed(3)}</BottomP>
             </ItemDiv>
           </OverviewInfo>
-          <Descrip>{infoData?.description || "No Data.."}</Descrip>
           <OverviewSupp>
             <ItemDiv>
               <TopP>TOTAL SUPPLY:</TopP>
@@ -273,17 +283,18 @@ function Coin({islight}: ICoinprops) {
               <BottomP>{tickersData?.max_supply || 0}</BottomP>
             </ItemDiv>
           </OverviewSupp>
+          <Descrip>{infoData?.description || "No Data.."}</Descrip>
           <Tabs>
-            <Tab isActive={chartMatch !== null}>
-              <Link to={`/${coinId}/chart`}>CHART</Link>
-            </Tab>
             <Tab isActive={priceMatch !== null}>
               <Link to={`/${coinId}/price`}>PRICE</Link>
+            </Tab>
+            <Tab isActive={chartMatch !== null}>
+              <Link to={`/${coinId}/chart`}>CHART</Link>
             </Tab>
           </Tabs>
           <Switch>
             <Route path={`/:coidId/price`}>
-              <Price />
+              <Price coinId={coinId}/>
             </Route>
             <Route path={`/:coidId/chart`}>
               <Chart islight={islight} coinId={coinId} />

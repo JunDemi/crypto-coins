@@ -1,5 +1,3 @@
-import { error } from "console";
-
 const BASE_URL = "https://api.coinpaprika.com/v1"
 
 export function fetchCoins() {
@@ -27,3 +25,4 @@ export function fetchCoinHistory(coinId: string){
     response.json()
   );
 }
+

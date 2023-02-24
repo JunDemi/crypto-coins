@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { fetchCoins } from "../api";
+import { Helmet } from "react-helmet";
 
 const Container = styled.div`
   padding: 0 20px;
@@ -88,6 +89,11 @@ function Coins({themeToggle}: ICoinsprops) {
 
   return (
     <Container>
+      <Helmet>
+        <title>
+          CRYPTO TRACKERS
+        </title>
+      </Helmet>
       <Header>
         <Title>Coins</Title>
       </Header>
@@ -98,7 +104,7 @@ function Coins({themeToggle}: ICoinsprops) {
           {data?.slice(0, 100).map((coin) => (
             <Coin key={coin.id}>
               <Link to={{
-                pathname: `/${coin.id}`,
+                pathname: `/${coin.id}/price`,
                 state: {name: coin.name}
               }}>
                 <CoinImg

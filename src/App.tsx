@@ -53,6 +53,7 @@ table {
 }
 body{
   font-family: 'Source Sans Pro', sans-serif;
+  transition: .2s;
   background-color: ${props => props.theme.bgColor};
   color: ${props => props.theme.textColor}
 }
