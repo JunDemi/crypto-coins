@@ -95,7 +95,7 @@ function Coins({themeToggle}: ICoinsprops) {
         </title>
       </Helmet>
       <Header>
-        <Title>Coins</Title>
+        <Title>CRYPTO TRACKERS from Jungwook</Title>
       </Header>
       {isLoading ? (
         <Loading>Loading...</Loading>
