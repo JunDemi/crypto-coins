@@ -92,11 +92,11 @@ function Price({ coinId }: PriceProps) {
               <span>
                 {Number(money?.percent_change_1h) > 0 ? (
                   <span style={{ color: "#fb5e46" }}>
-                    {money?.percent_change_1h + "%"} ↗
+                    {money?.percent_change_1h + "%"} &uarr;
                   </span>
                 ) : (
                   <span style={{ color: "#27a0f0" }}>
-                    {money?.percent_change_1h + "%"} ↘
+                    {money?.percent_change_1h + "%"} &darr;
                   </span>
                 )}
               </span>
@@ -106,11 +106,11 @@ function Price({ coinId }: PriceProps) {
               <span>
                 {Number(money?.percent_change_6h) > 0 ? (
                   <span style={{ color: "#fb5e46" }}>
-                    {money?.percent_change_6h + "%"} ↗
+                    {money?.percent_change_6h + "%"} &uarr;
                   </span>
                 ) : (
                   <span style={{ color: "#27a0f0" }}>
-                    {money?.percent_change_6h + "%"} ↘
+                    {money?.percent_change_6h + "%"} &darr;
                   </span>
                 )}
               </span>
@@ -120,11 +120,11 @@ function Price({ coinId }: PriceProps) {
               <span>
                 {Number(money?.percent_change_24h) > 0 ? (
                   <span style={{ color: "#fb5e46" }}>
-                    {money?.percent_change_24h + "%"} ↗
+                    {money?.percent_change_24h + "%"} &uarr;
                   </span>
                 ) : (
                   <span style={{ color: "#27a0f0" }}>
-                    {money?.percent_change_24h + "%"} ↘
+                    {money?.percent_change_24h + "%"} &darr;
                   </span>
                 )}
               </span>
@@ -134,11 +134,11 @@ function Price({ coinId }: PriceProps) {
               <span>
                 {Number(money?.percent_change_7d) > 0 ? (
                   <span style={{ color: "#fb5e46" }}>
-                    {money?.percent_change_7d + "%"} ↗
+                    {money?.percent_change_7d + "%"} &uarr;
                   </span>
                 ) : (
                   <span style={{ color: "#27a0f0" }}>
-                    {money?.percent_change_7d + "%"} ↘
+                    {money?.percent_change_7d + "%"} &darr;
                   </span>
                 )}
               </span>
@@ -148,11 +148,11 @@ function Price({ coinId }: PriceProps) {
               <span>
                 {Number(money?.percent_change_30d) > 0 ? (
                   <span style={{ color: "#fb5e46" }}>
-                    {money?.percent_change_30d + "%"} ↗
+                    {money?.percent_change_30d + "%"} &uarr;
                   </span>
                 ) : (
                   <span style={{ color: "#fb5e46" }}>
-                    {money?.percent_change_30d + "%"} ↘
+                    {money?.percent_change_30d + "%"} &darr;
                   </span>
                 )}
               </span>
@@ -162,11 +162,11 @@ function Price({ coinId }: PriceProps) {
               <span>
                 {Number(money?.percent_change_1y) > 0 ? (
                   <span style={{ color: "#fb5e46" }}>
-                    {money?.percent_change_1y + "%"} ↗
+                    {money?.percent_change_1y + "%"} &uarr;
                   </span>
                 ) : (
                   <span style={{ color: "#27a0f0" }}>
-                    {money?.percent_change_1y + "%"} ↘
+                    {money?.percent_change_1y + "%"} &darr;
                   </span>
                 )}
               </span>
