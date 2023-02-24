@@ -67,4 +67,5 @@ npm i react-helmet
 npm i --save-dev @types/react-helmet
 
 npm i gh-pages
+npm install gh-pages --save-dev
 npm run build
