@@ -1,7 +1,6 @@
 {
   "name": "masterclass",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "@tanstack/react-query": "^4.24.10",
     "@types/jest": "^29.4.0",
@@ -51,8 +50,6 @@
   "devDependencies": {
     "@tanstack/react-query-devtools": "^4.24.10",
     "@types/react-helmet": "^6.1.6",
-    "@types/react-router-dom": "^5.3.3",
-    "gh-pages": "^5.0.0"
-  },
-  "homepage": "https://JunDemi.github.io/masterclass"
+    "@types/react-router-dom": "^5.3.3"
+  }
 }
