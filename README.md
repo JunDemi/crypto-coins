@@ -5,7 +5,6 @@
 #### `프레임워크 & 언어`
 <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=ffffff"/> <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=ffffff"/>
 #### `사용 라이브러리`
-<img src="https://img.shields.io/badge/React Query-FF4154?style=for-the-badge&logo=reactquery&logoColor=ffffff"/>
-
+<img src="https://img.shields.io/badge/React Query-FF4154?style=for-the-badge&logo=reactquery&logoColor=ffffff"/> <img src="https://img.shields.io/badge/ApexChart.js-1ce284?style=for-the-badge"/> <img src="https://img.shields.io/badge/Styled Components-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=ffffff"/>
 #### `배포 사이트 (링크)`
 ##### [https://crypto-coins-lac.vercel.app/](https://crypto-coins-lac.vercel.app/)
