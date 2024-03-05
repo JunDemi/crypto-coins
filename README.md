@@ -8,3 +8,7 @@
 <img src="https://img.shields.io/badge/React Query-FF4154?style=for-the-badge&logo=reactquery&logoColor=ffffff"/> <img src="https://img.shields.io/badge/ApexChart.js-1ce284?style=for-the-badge"/> <img src="https://img.shields.io/badge/Styled Components-DB7093?style=for-the-badge&logo=styledcomponents&logoColor=ffffff"/>
 #### `배포 사이트 (링크)`
 ##### [https://crypto-coins-lac.vercel.app/](https://crypto-coins-lac.vercel.app/)
+
+#### `코인파프리카 (링크)`
+##### [https://coinpaprika.com/](https://coinpaprika.com/)
+
