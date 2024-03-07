@@ -1,4 +1,4 @@
-### `Cryto Coin Tracker`
+### `Crypto Coin Tracker`
 ![그림1](https://github.com/JunDemi/crypto-coins/assets/26836516/4c445fe2-5cf6-404e-84cf-7ae0b2f3d678)
 - Coinpaprika에서 제공하는 암호화폐 API를 이용하여 정보를 조회하는 사이트입니다.
 - ApexChart의 캔들스틱 그래프, ThemeProvider를 이용한 다크모드, 라이트모드의 디자인도 구현하였습니다.
